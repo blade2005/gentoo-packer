@@ -26,7 +26,7 @@ for script in \
   $VM_TYPE    \
   network     \
   vagrant     \
-  extras      \
+  extra       \
   cleanup
 do
   "$SCRIPTS/scripts/$script.sh"
