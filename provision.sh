@@ -19,6 +19,7 @@ for script in \
   mounts      \
   resolv.conf \
   portage     \
+  locale      \
   timezone    \
   fstab       \
   kernel      \
