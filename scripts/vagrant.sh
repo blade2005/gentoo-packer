@@ -2,7 +2,7 @@
 
 chroot /mnt/gentoo /bin/bash <<'EOF'
 USE="-sendmail" emerge app-admin/sudo
-emerge net-fs/nfs-utils
+emerge --quiet-build net-fs/nfs-utils
 useradd -m -s /bin/bash vagrant
 echo vagrant:vagrant | chpasswd
 echo 'vagrant ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/vagrant
