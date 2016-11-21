@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sed -i 's/runscript/openrc-run/' /mnt/gentoo/etc/init.d/*
+
 chroot /mnt/gentoo /bin/bash <<'EOF'
 cd /usr/src/linux && make clean
 emerge --quiet-build -C sys-kernel/gentoo-sources
