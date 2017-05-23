@@ -12,6 +12,6 @@ GRUB_TERMINAL=serial
 GRUB_SERIAL_COMMAND="serial --speed=38400 --unit=0 --word=8 --parity=no --stop=1"
 EOD
 
-grub-install /dev/sda
+grub-install ${BLK_DEV}
 grub-mkconfig -o /boot/grub/grub.cfg
 EOF
