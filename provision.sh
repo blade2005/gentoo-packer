@@ -12,6 +12,7 @@ for script in          \
   stage3               \
   mounts               \
   resolv.conf          \
+  repos                \
   portage              \
   locale               \
   timezone             \
