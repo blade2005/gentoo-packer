@@ -13,8 +13,9 @@ for script in          \
   mounts               \
   resolv.conf          \
   repos                \
-  portage              \
+  configure-portage    \
   locale               \
+  world                \
   timezone             \
   fstab                \
   kernel               \
