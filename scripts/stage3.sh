@@ -1,11 +1,10 @@
 #!/bin/bash
 
-tarball=stage3-amd64-nomultilib-$STAGE3.tar.bz2
 
-mount ${BLK_DEV}4 /mnt/gentoo
+mount ${BLK_DEV}3 /mnt/gentoo
 df -h /mnt/gentoo
 sleep 10
 cd /mnt/gentoo
-wget -q http://distfiles.gentoo.org/releases/amd64/autobuilds/$STAGE3/$tarball
+wget -q -O stage3.tar.xz https://gentoo.osuosl.org/releases/amd64/autobuilds/$(curl -s https://gentoo.osuosl.org/releases/amd64/autobuilds/latest-stage3-amd64.txt | grep -v ^# |awk '{print $1}')
 tar xjpf $tarball
 rm -f $tarball
