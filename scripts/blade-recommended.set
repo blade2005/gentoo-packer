@@ -43,9 +43,9 @@ mail-client/mutt
 mail-mta/sendmail
 media-gfx/imagemagick
 media-video/mpv
-net-analyzer/gnu-netcat
 net-analyzer/iftop
 net-analyzer/mtr
+net-analyzer/netcat
 net-analyzer/rrdtool
 net-analyzer/tcpdump
 net-analyzer/tcptraceroute
