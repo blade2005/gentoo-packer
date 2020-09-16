@@ -1,5 +1,9 @@
 #!/bin/bash
 
+cat << 'EOF' >> /mnt/gentoo/etc/portage/make.conf
+USE="$USE cron vim vim-syntax nano nano-syntax python -systemd -gtk -gnome -kde -qt4 -alsa curl lzma lz0 nmap ssl readline ncurses ruby logrotate symlink"
+EOF
+
 chroot /mnt/gentoo /bin/bash <<'EOF'
 mkdir /usr/portage
 cd /etc/portage
