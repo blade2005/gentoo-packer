@@ -9,6 +9,7 @@ EOF
 
 chroot /mnt/gentoo /bin/bash <<'EOF'
 mkdir /usr/portage
+mkdir -p /etc/portage/package.{accept_keywords,use,mask,unmask}
 cd /etc/portage
 rm make.profile
 ln -s ../../var/db/repos/gentoo/profiles/default/linux/amd64/17.1 make.profile
