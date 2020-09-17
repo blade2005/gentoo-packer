@@ -2,8 +2,10 @@
 
 cp $SCRIPTS/scripts/kernel.config /mnt/gentoo/tmp/kernel.config
 cp $SCRIPTS/scripts/authorized_keys /mnt/gentoo/tmp/authorized_keys
-echo sys-kernel/vanilla-kernel ~amd64 >> \
-  /mnt/gentoo/etc/portage/package.accept_keywords/kernel
+cat << 'EOF' >> /mnt/gentoo/etc/portage/package.accept_keywords/kernel
+sys-kernel/vanilla-kernel ~amd64
+sys-kernel/kergen
+EOF
 
 chroot /mnt/gentoo /bin/bash <<'EOF'
 emerge -n \
