@@ -2,15 +2,14 @@
 
 cp $SCRIPTS/scripts/kernel.config /mnt/gentoo/tmp/kernel.config
 cp $SCRIPTS/scripts/authorized_keys /mnt/gentoo/tmp/authorized_keys
+echo sys-kernel/vanilla-kernel ~amd64 >> \
+  /mnt/gentoo/etc/portage/package.accept_keywords/kernel
 
 chroot /mnt/gentoo /bin/bash <<'EOF'
-echo sys-kernel/vanilla-kernel ~amd64 >> \
-  /etc/portage/package.accept_keywords/kernel
-emerge \
+emerge -n \
   sys-kernel/vanilla-sources \
   sys-kernel/genkernel \
   sys-kernel/linux-firmware
-cd /usr/src/linux
 genkernel \
   --install \
   --lvm \
