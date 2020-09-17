@@ -14,26 +14,24 @@ emerge -n \
   sys-kernel/linux-firmware \
   sys-kernel/linux-headers \
   sys-kernel/kergen
+cp /tmp/kernel.config /usr/src/linux/.config
 yes | kergen -g
 genkernel \
-  --mrproper \
-  --clean \
   --install \
   --lvm \
   --symlink \
   --loglevel=1 \
+  --oldconfig \
+  --no-zfs \
+  --no-btrfs \
+  --ssh-authorized-keys-file=/tmp/authorized_keys \
+  --ssh \
+  --microcode=all \
+  --microcode \
+  --no-menuconfig \
+  --mountboot \
+  --module-rebuild \
+  --makeopts=-j$(grep -c proc /proc/cpuinfo) \
   all
 EOF
-#  --oldconfig \
-#  --no-zfs \
-#  --no-btrfs \
-#  --kernel-config=/tmp/kernel.config \
-#  --ssh-authorized-keys-file=/tmp/authorized_keys \
-#  --ssh \
-#  --microcode=all \
-#  --microcode \
-#  --no-menuconfig \
-#  --mountboot \
-#  --module-rebuild \
-#  --makeopts=-j$(grep -c proc /proc/cpuinfo) \
 
