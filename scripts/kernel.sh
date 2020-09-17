@@ -18,9 +18,9 @@ genkernel \
   --no-btrfs \
   --oldconfig \
   --loglevel=1 \
-  --kernel-config=/tmp/kernel.config \
   all
 EOF
+#  --kernel-config=/tmp/kernel.config \
 #  --ssh-authorized-keys-file=/tmp/authorized_keys \
 #  --ssh \
 #  --microcode=all \
