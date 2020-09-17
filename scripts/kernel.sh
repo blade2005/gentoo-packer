@@ -14,7 +14,7 @@ emerge -n \
   sys-kernel/linux-firmware \
   sys-kernel/linux-headers \
   sys-kernel/kergen
-kergen -g
+yes | kergen -g
 genkernel \
   --mrproper \
   --clean \
