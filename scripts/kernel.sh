@@ -11,6 +11,7 @@ emerge -n \
   sys-kernel/genkernel \
   sys-kernel/linux-firmware
 genkernel \
+  --mrproper \
   --install \
   --lvm \
   --symlink \
