@@ -3,7 +3,7 @@
 cp $SCRIPTS/scripts/blade-recommended.set /mnt/gentoo/etc/portage/sets/blade-recommended
 chroot /mnt/gentoo /bin/bash <<'EOF'
 emerge --quiet-build -U --autounmask y --autounmask-write y \
-@blade-recommend
+@blade-recommended
 EOF
 
 chroot /mnt/gentoo /bin/bash <<'EOF'
