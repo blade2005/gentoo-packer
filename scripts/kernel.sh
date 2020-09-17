@@ -9,18 +9,22 @@ chroot /mnt/gentoo /bin/bash <<'EOF'
 emerge -n \
   sys-kernel/vanilla-sources \
   sys-kernel/genkernel \
-  sys-kernel/linux-firmware
+  sys-kerneil/linux-firmware \
+  sys-kernel/linux-headers \
+  sys-kernel/kergen
+kergen -g
 genkernel \
   --mrproper \
+  --clean \
   --install \
   --lvm \
   --symlink \
-  --no-zfs \
-  --no-btrfs \
-  --oldconfig \
   --loglevel=1 \
   all
 EOF
+#  --oldconfig \
+#  --no-zfs \
+#  --no-btrfs \
 #  --kernel-config=/tmp/kernel.config \
 #  --ssh-authorized-keys-file=/tmp/authorized_keys \
 #  --ssh \
