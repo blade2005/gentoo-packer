@@ -54,7 +54,6 @@ net-dns/bind-tools
 net-misc/curl
 net-misc/dhcpcd
 net-misc/netifrc
-net-misc/ntp
 net-misc/openntpd
 net-misc/openssh
 net-misc/rclone
