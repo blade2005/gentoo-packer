@@ -4,6 +4,7 @@ sed -i 's/runscript/openrc-run/' /mnt/gentoo/etc/init.d/*
 
 chroot /mnt/gentoo /bin/bash <<'EOF'
 cd /usr/src/linux && make clean
+etc-update --automode 5
 emerge --quiet-build -C sys-kernel/gentoo-sources
 emerge --depclean
 EOF

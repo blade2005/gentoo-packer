@@ -22,14 +22,15 @@ genkernel \
   --no-btrfs \
   --oldconfig \
   --loglevel=1 \
-#  --ssh-authorized-keys-file=/tmp/authorized_keys \
-#  --ssh \
   --kernel-config=/tmp/kernel.config \
   --no-menuconfig \
   --mountboot \
-#  --microcode=all \
-#  --microcode \
   --module-rebuild \
   --makeopts=-j$(grep -c proc /proc/cpuinfo) \
   all
 EOF
+#  --ssh-authorized-keys-file=/tmp/authorized_keys \
+#  --ssh \
+#  --microcode=all \
+#  --microcode \
+
