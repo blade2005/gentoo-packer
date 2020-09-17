@@ -1,7 +1,12 @@
 #!/bin/bash
 
 cp $SCRIPTS/scripts/kernel.config /mnt/gentoo/tmp/kernel.config
-cp $SCRIPTS/scripts/authorized_keys /mnt/gentoo/tmp/authorized_keys
+
+mkdir -p /mnt/gentoo/root/.ssh
+cp $SCRIPTS/scripts/authorized_keys /mnt/gentoo/root/.ssh/authorized_keys
+chmod 0400 /mnt/gentoo/root/.ssh/authorized_keys
+chmod 0700 /mnt/gentoo/root/.ssh
+
 cat << 'EOF' >> /mnt/gentoo/etc/portage/package.accept_keywords/kernel
 sys-kernel/vanilla-kernel ~amd64
 sys-kernel/kergen
@@ -14,8 +19,11 @@ emerge -n \
   sys-kernel/linux-firmware \
   sys-kernel/linux-headers \
   sys-kernel/kergen
+
 cp /tmp/kernel.config /usr/src/linux/.config
-yes | kergen -g
+
+yes | kergen -g; echo
+
 genkernel \
   --install \
   --lvm \
@@ -24,7 +32,7 @@ genkernel \
   --oldconfig \
   --no-zfs \
   --no-btrfs \
-  --ssh-authorized-keys-file=/tmp/authorized_keys \
+  --ssh-authorized-keys-file=/root/.ssh/authorized_keys \
   --ssh \
   --microcode=all \
   --microcode \
