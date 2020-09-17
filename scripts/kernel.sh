@@ -9,7 +9,7 @@ chroot /mnt/gentoo /bin/bash <<'EOF'
 emerge -n \
   sys-kernel/vanilla-sources \
   sys-kernel/genkernel \
-  sys-kerneil/linux-firmware \
+  sys-kernel/linux-firmware \
   sys-kernel/linux-headers \
   sys-kernel/kergen
 kergen -g
