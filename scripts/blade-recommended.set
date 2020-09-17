@@ -81,7 +81,6 @@ sys-fs/mdadm
 sys-kernel/genkernel
 sys-kernel/linux-firmware
 sys-kernel/linux-headers
-sys-kernel/vanilla-sources
 sys-power/acpi
 sys-power/acpid
 sys-power/cpupower
