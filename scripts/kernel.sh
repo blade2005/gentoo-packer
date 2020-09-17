@@ -20,14 +20,14 @@ genkernel \
   --oldconfig \
   --loglevel=1 \
   --kernel-config=/tmp/kernel.config \
-  --no-menuconfig \
-  --mountboot \
-  --module-rebuild \
-  --makeopts=-j$(grep -c proc /proc/cpuinfo) \
   all
 EOF
 #  --ssh-authorized-keys-file=/tmp/authorized_keys \
 #  --ssh \
 #  --microcode=all \
 #  --microcode \
+#  --no-menuconfig \
+#  --mountboot \
+#  --module-rebuild \
+#  --makeopts=-j$(grep -c proc /proc/cpuinfo) \
 
