@@ -12,7 +12,6 @@ app-arch/lzop
 app-arch/unrar
 app-arch/zip
 app-editors/nano
-app-editors/neovim
 app-editors/vim
 app-emulation/docker
 app-emulation/docker-compose
@@ -21,14 +20,19 @@ app-emulation/qemu
 app-misc/jq
 app-misc/screen
 app-office/sc
+app-portage/conf-update
 app-portage/eix
+app-portage/elicense
 app-portage/flaggie
 app-portage/genlop
 app-portage/gentoolkit
+app-portage/gpyutils
 app-portage/layman
+app-portage/pgo
 app-portage/portage-utils
 app-portage/portpeek
 app-portage/smart-live-rebuild
+app-portage/ufed
 app-text/tree
 app-vim/gentoo-syntax
 dev-python/pip
@@ -45,7 +49,7 @@ media-gfx/imagemagick
 media-video/mpv
 net-analyzer/iftop
 net-analyzer/mtr
-net-analyzer/netcat
+net-analyzer/openbsd-netcat
 net-analyzer/rrdtool
 net-analyzer/tcpdump
 net-analyzer/tcptraceroute
@@ -54,7 +58,7 @@ net-dns/bind-tools
 net-misc/curl
 net-misc/dhcpcd
 net-misc/netifrc
-net-misc/openntpd
+net-misc/ntp
 net-misc/openssh
 net-misc/rclone
 net-misc/whois
