@@ -38,6 +38,10 @@ genkernel \
   --microcode \
   --no-menuconfig \
   --mountboot \
+  --bootloader=grub \
+  --firmware \
+  --compress-initramfs \
+  --compress-initramfs-type=lz4 \
   --module-rebuild \
   --makeopts=-j$(grep -c proc /proc/cpuinfo) \
   all
