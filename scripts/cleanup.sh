@@ -25,5 +25,6 @@ mv /mnt/gentoo/zerofree* ./
 cd zerofree*/
 
 mount -o remount,ro /mnt/gentoo
+mount | grep /mnt/gentoo | tac | awk '{print $3}' | xargs -n1 umount
 ./zerofree ${BLK_DEV}3
 
