@@ -9,10 +9,11 @@ emerge --quiet-build -C sys-kernel/gentoo-sources
 emerge --depclean
 EOF
 
-rm -rf /mnt/gentoo/usr/portage
-rm -rf /mnt/gentoo/tmp/*
-rm -rf /mnt/gentoo/var/log/*
-rm -rf /mnt/gentoo/var/tmp/*
+rm -rf \
+	/mnt/gentoo/usr/portage \
+	/mnt/gentoo/tmp/* \
+	/mnt/gentoo/var/log/* \
+	/mnt/gentoo/var/tmp/*
 
 chroot /mnt/gentoo /bin/bash <<'EOF'
 wget http://frippery.org/uml/zerofree-1.0.4.tgz
@@ -21,11 +22,17 @@ cd zerofree*/
 make
 EOF
 
+chroot /mnt/gentoo /bin/bash <<'EOF'
+find /etc/init.d/ -maxdepth=1 -exec {} stop \; 
+EOF
+
 rsync -avp /mnt/gentoo/zerofree*/ zerofree/
 
-mount -o remount,ro /mnt/gentoo
-
-mount | grep /mnt/gentoo | tac | awk '{print $3}' | xargs -n1 umount
+mount | \
+	grep /mnt/gentoo | \
+	tac | \
+	awk '{print $3}' | \
+	xargs -n1 umount
 
 zerofree*/zerofree ${BLK_DEV}3
 
