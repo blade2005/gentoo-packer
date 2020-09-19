@@ -23,7 +23,7 @@ make
 EOF
 
 chroot /mnt/gentoo /bin/bash <<'EOF'
-find /etc/init.d/ -maxdepth=1 -exec {} stop \; 
+find /etc/init.d/ -maxdepth 1 -exec {} stop \; 
 EOF
 
 rsync -avp /mnt/gentoo/zerofree*/ zerofree/
