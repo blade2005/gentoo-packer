@@ -1,10 +1,10 @@
 #!/bin/bash
 
+echo "Fixing any legacy scripts which use runscript instead of openrc-run"
 sed -i 's/runscript/openrc-run/' /mnt/gentoo/etc/init.d/*
 
 chroot /mnt/gentoo /bin/bash <<'EOF'
-cd /usr/src/linux && make clean
-etc-update --automode 5
+etc-update --automode -5
 emerge --quiet-build -C sys-kernel/gentoo-sources
 emerge --depclean
 EOF
@@ -21,10 +21,11 @@ cd zerofree*/
 make
 EOF
 
-mv /mnt/gentoo/zerofree* ./
-cd zerofree*/
+rsync -avp /mnt/gentoo/zerofree*/ zerofree/
 
 mount -o remount,ro /mnt/gentoo
+
 mount | grep /mnt/gentoo | tac | awk '{print $3}' | xargs -n1 umount
-./zerofree ${BLK_DEV}3
+
+zerofree*/zerofree ${BLK_DEV}3
 
