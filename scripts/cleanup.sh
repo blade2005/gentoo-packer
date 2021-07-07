@@ -1,17 +1,19 @@
 #!/bin/bash
 
+echo "Fixing any legacy scripts which use runscript instead of openrc-run"
 sed -i 's/runscript/openrc-run/' /mnt/gentoo/etc/init.d/*
 
 chroot /mnt/gentoo /bin/bash <<'EOF'
-cd /usr/src/linux && make clean
+etc-update --automode -5
 emerge --quiet-build -C sys-kernel/gentoo-sources
 emerge --depclean
 EOF
 
-rm -rf /mnt/gentoo/usr/portage
-rm -rf /mnt/gentoo/tmp/*
-rm -rf /mnt/gentoo/var/log/*
-rm -rf /mnt/gentoo/var/tmp/*
+rm -rf \
+	/mnt/gentoo/usr/portage \
+	/mnt/gentoo/tmp/* \
+	/mnt/gentoo/var/log/* \
+	/mnt/gentoo/var/tmp/*
 
 chroot /mnt/gentoo /bin/bash <<'EOF'
 wget http://frippery.org/uml/zerofree-1.0.4.tgz
@@ -20,12 +22,17 @@ cd zerofree*/
 make
 EOF
 
-mv /mnt/gentoo/zerofree* ./
-cd zerofree*/
+chroot /mnt/gentoo /bin/bash <<'EOF'
+find /etc/init.d/ -maxdepth 1 -exec {} stop \; 
+EOF
 
-mount -o remount,ro /mnt/gentoo
-./zerofree ${BLK_DEV}4
+rsync -avp /mnt/gentoo/zerofree*/ zerofree/
 
-swapoff ${BLK_DEV}3
-dd if=/dev/zero of=${BLK_DEV}3
-mkswap ${BLK_DEV}3
+mount | \
+	grep /mnt/gentoo | \
+	tac | \
+	awk '{print $3}' | \
+	xargs -n1 umount
+
+zerofree*/zerofree ${BLK_DEV}3
+

@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+
 if [[ -z $STAGE3 ]]
 then
   echo "STAGE3 environment variable must be set to a timestamp."
@@ -24,8 +25,10 @@ for script in          \
   stage3               \
   mounts               \
   resolv.conf          \
-  portage              \
+  repos                \
+  configure-portage    \
   locale               \
+  world                \
   timezone             \
   fstab                \
   kernel               \
